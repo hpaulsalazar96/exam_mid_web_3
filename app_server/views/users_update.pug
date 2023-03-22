@@ -21,13 +21,13 @@ block content
       form.form-inline.mt-2.mt-md-0(action='/users_update', method='post', role='form')
         .row.g-3.align-items-center
           .col-auto
-          label.col-form-label(for='textoBuscar') Ingrese el C&oacute;digo/Nombre de usuario a modificar
+            label.col-form-label(for='textoBuscar') Ingrese el C&oacute;digo/Nombre de usuario a modificar
           .col-auto
-          input.form-control.mr-sm-2.ml-sm-2(type='text' ,name="codigo" ,placeholder='Código de usuario' ,aria-label='Buscar' )
+            input.form-control.mr-sm-2.ml-sm-2(type='text' ,name="codigo" ,placeholder='Código de usuario' ,aria-label='Buscar' )
           .col-auto
-          button.btn.btn-outline-light.my-2.mx-2(type='submit') Buscar
-          span#buscarAyuda.form-text.ml-md-2
-              | Puede ingresar caracteres alfanum&eacute;ricos
+            button.btn.btn-outline-light.my-2.mx-2(type='submit') Buscar
+            span#buscarAyuda.form-text.ml-md-2
+                | Puede ingresar caracteres alfanum&eacute;ricos
 
 
       .row
@@ -82,8 +82,8 @@ block content
                     option(value='Periodismo 3') Periodismo 3
                 .col-md-12.d-flex.mb-3  
                   //Añadimos el campo 'documento' para no perder el object Id del documento a actualizar           
-                  label.col-md-4.col-form-label(for='documento') Código del Documento a Actualizar
-                  input#documento.form-control(type='text', name='documento', value=documento, placeholder='Código del Documento', readonly='')
+                  label.col-md-4.col-form-label(for='documento' hidden) Código del Documento a Actualizar
+                  input#documento.form-control(type='text', name='documento', value=documento, hidden, placeholder='Código del Documento', readonly='')
                 button.btn.btn-dark.btn-outline-secondary(type='submit') Actualizar Usuario
           // Fin Formulario
       hr(style='background-color: white;')
