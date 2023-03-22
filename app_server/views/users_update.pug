@@ -1,0 +1,90 @@
+extends layout
+
+block content
+  // Examen de Medio Semestre - Desarrollo web 3
+  .cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
+    header.mb-auto
+      div
+        h3.float-md-start.mb-0 #{title}
+        nav.nav.nav-masthead.justify-content-center.float-md-end
+          //a.nav-link(aria-current='page' href='/') Inicio
+          a.nav-link.active(aria-current='page' href='/') Inicio
+          //a.nav-link.active(href='/users_add') Añadir Usuarios
+          a.nav-link(href='/users_add') Añadir Usuarios
+          //a.nav-link.active(href='/users_update') Modificar Usuarios
+          a.nav-link(href='/users_update') Modificar Usuarios
+
+    main.inner.cover.bg-dark(role='main')
+      hr(style='background-color: white;')
+      h1.text-center Creaci&oacute;n de usuarios
+
+      form.form-inline.mt-2.mt-md-0(action='/users_update', method='post', role='form')
+        .row.g-3.align-items-center
+          .col-auto
+          label.col-form-label(for='textoBuscar') Ingrese el C&oacute;digo/Nombre de usuario a modificar
+          .col-auto
+          input.form-control.mr-sm-2.ml-sm-2(type='text' ,name="codigo" ,placeholder='Código de usuario' ,aria-label='Buscar' )
+          .col-auto
+          button.btn.btn-outline-light.my-2.mx-2(type='submit') Buscar
+          span#buscarAyuda.form-text.ml-md-2
+              | Puede ingresar caracteres alfanum&eacute;ricos
+
+
+      .row
+        .col-md-12
+          .card
+            // Inicia Formulario
+            .card-body.bg-secondary
+              form.row.g-3(action='', method='post', role='form')
+                .col-md-6
+                  label.form-label(for='nombre') Nombre
+                  input#nombre.form-control(type='text' name='nombre' placeholder='Ingrese el nombre del usuario')
+                .col-md-6
+                  label.form-label(for='apellido') Apellido
+                  input#apellido.form-control(type='text' name='apellido' placeholder='Ingrese el apellido del usuario')
+                .col-12
+                  label.form-label(for='direccion') Direcci&oacute;n
+                  input#direccion.form-control(type='text' name='direccion' placeholder='Ingrese la dirección del usuario')
+                .col-md-4
+                  label.form-label(for='identificacion') Identificaci&oacute;n
+                  input#identificacion.form-control(type='number' name='identificacion' placeholder='Ingrese la identificación del usuario')
+                .col-md-4
+                  label.form-label(for='edad') Edad
+                  input#edad.form-control(type='number' name='edad' placeholder='Ingrese la edad del usuario')
+                .col-md-4
+                  label.form-label(for='telefono') Tel&eacute;fono
+                  input#telefono.form-control(type='number' name='telefono' placeholder='Ingrese el teléfono del usuario')
+                .col-md-6
+                  .col-md-12.mb-3
+                    label.form-label(for='tipo') Tipo de Materia
+                    select#tipo.form-select(name='tipo')
+                      option(selected) Seleccione el tipo de materia
+                      option(value='Presencial') Presencial
+                      option(value='Virtual') Virtual
+                  .col-md-12.mb-3
+                    label.form-label(for='carrera') Carrera
+                    input#carrera.form-control(type='text' name='carrera' placeholder='Ingrese el nombre de la carrera')
+                  .col-md-12.mb-3
+                    label.form-label(for='fecha') Fecha de Creación
+                    input#fecha.form-control(type='date' name='creado' placeholder='Fecha Actual')
+                .col-md-6.d-flex.mb-3
+                  label.col-md-3.col-form-label(for='materias') Materias
+                  select#materias.form-select(name='nombres' multiple='' aria-label='multiple select materias')
+                    option(selected='') Seleccione las materias
+                    option(value='Desarrollo web 1') Desarrollo web 1
+                    option(value='Desarrollo web 2') Desarrollo web 2
+                    option(value='Desarrollo web 3') Desarrollo web 3
+                    option(value='Fotografía 1') Fotografía 1
+                    option(value='Fotografía 2') Fotografía 2
+                    option(value='Fotografía 3') Fotografía 3
+                    option(value='Periodismo 1') Periodismo 1
+                    option(value='Periodismo 2') Periodismo 2
+                    option(value='Periodismo 3') Periodismo 3
+                button.btn.btn-dark.btn-outline-secondary(type='submit') Crear Usuario
+          // Fin Formulario
+      hr(style='background-color: white;')
+    footer.mt-auto.text-white-50
+      p
+        | Desarrollo web 3 
+        a.text-danger(href='https://www.usfq.edu.ec/es' target='_blank') USFQ
+        | , Examen de medio semestre.

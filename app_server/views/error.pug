@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  // Examen de Medio Semestre - Desarrollo web 3
+  .cover-container.w-100.h-100.p-3.mx-auto.flex-column
+    header.mb-auto
+      div
+        h3.float-md-start.mb-0 Examen No. 1
+        nav.nav.nav-masthead.justify-content-center.float-md-end
+          // a.nav-link.active(aria-current='page' href='/') Inicio
+          a.nav-link(aria-current='page' href='/') Inicio
+          a.nav-link(href='/users_add') Añadir Usuarios
+          a.nav-link(href='/users_update') Modificar Usuarios
+    main.px-3.text-start
+      br
+      .mb-5 
+      hr(style='background-color: white;')
+      p.lead
+        | Se ha producido un error con código: 
+        span.text-danger "#{error.status}"
+        | . A continuación los detalles: 
+      hr(style='background-color: white;') 
+      h1= message
+      h2= error.status
+      pre #{error.stack}

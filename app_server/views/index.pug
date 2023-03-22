@@ -1,0 +1,72 @@
+extends layout
+
+block content
+  // Examen de Medio Semestre - Desarrollo web 3
+  .cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
+    header.mb-auto
+      div
+        h3.float-md-start.mb-0 #{title}
+        nav.nav.nav-masthead.justify-content-center.float-md-end
+          //a.nav-link(aria-current='page' href='/') Inicio
+          a.nav-link.active(aria-current='page' href='/') Inicio
+          //a.nav-link.active(href='/users_add') Añadir Usuarios
+          a.nav-link(href='/users_add') Añadir Usuarios
+          //a.nav-link.active(href='/users_update') Modificar Usuarios
+          a.nav-link(href='/users_update') Modificar Usuarios
+    main.px-3
+      h1.cover-heading #{materia}
+      p.lead
+        | Las instrucciones para desarrollar este examen, se encuentran descritas en D2L dentro de la carpeta "Examen 1". Adicionalmente, se proporcionarán instrucciones previo al inicio del examen.
+      button.btn.btn-light(type='button' data-bs-toggle='modal' data-bs-target='#iniciarExamen')
+        | Iniciar el Examen
+
+    // Ventana modal
+    #iniciarExamen.modal.fade.bg-dark(tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+      .modal-dialog.modal-dialog-scrollable.modal-lg
+        .modal-content.bg-secondary
+          .modal-header.bg-secondary
+            h5#staticBackdropLabel.modal-title Examen de medio semestre - Instrucciones
+            button.btn-close.btn-secondary(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body.bg-black.bg-opacity-75
+            - var fecha = new Date();
+            - var dia = fecha.getDate();
+            - var mes = fecha.getMonth() + 1;
+            - var anio = fecha.getFullYear();
+
+            - if (mes < 10) month = "0" + mes;
+            - if (dia < 10) dia = "0" + dia;
+
+            - var hoy = "Fecha: " + dia + "/" + mes + "/" + anio;
+
+            p.text-end #{hoy}
+            h3.text-center Examen No. 1
+            p.text-start
+              | En base al código proporcionado, realizar las modificaciones necesarias para añadir las siguientes funcionalidades:
+            pre.text-start.font-monospace.fw-bold.text-warning.
+                    • Creación de usuarios
+                    • Modificación de usuarios
+                                          
+            p.text-start
+              | Para lograr este propósito, el código cuenta con una REST API (aquella realizada en clase), la cual ya posee el código asociado a los métodos POST y PUT. Adicionalmente, se ha proporcionado los formularios correspondientes en HTML para la creación/modificación
+              | de usuarios. Para su referencia, las vistas: layout, error e index ya se encuentran convertidas a formato pug.
+            p.text-start
+              | Utilizando el esquema MVC, se deberán crear las vistas (contenido), controladores (rutas) y modelo (DB) para cumplir con el requerimiento.
+            p.text-start
+              | Las implementaciones requeridas deberán cumplir todas las especificaciones solicitadas para obtener la máxima nota. Se deberá subir a la plataforma D2L en un archivo comprimido: el proyecto, con excepción de la carpeta node_modules.
+            p.text-start
+              | Publicar el examen en heroku en una nueva aplicación, procurar nombrarla examen-{nombre.apellido}. Para lograrlo, deberán crear una nueva app en heroku.com con la convención de nombres anterior, y en el terminal local usar los siguientes comandos:
+            pre.text-start.font-monospace.text-warning.
+                    $ git init
+                    $ heroku git:remote -a examen-{nombre.apellido}
+                    $ git add *
+                    $ git commit -m "Comentario del cambio"
+                    $ git push heroku master
+                                          
+          .modal-footer.bg-secondary
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cerrar
+
+    footer.mt-auto.text-white-50
+      p
+        | Desarrollo web 3 
+        a.text-danger(href='https://www.usfq.edu.ec/es' target='_blank') USFQ
+        | , #{examen}
