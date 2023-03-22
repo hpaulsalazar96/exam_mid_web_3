@@ -8,15 +8,15 @@ block content
         h3.float-md-start.mb-0 #{title}
         nav.nav.nav-masthead.justify-content-center.float-md-end
           //a.nav-link(aria-current='page' href='/') Inicio
-          a.nav-link.active(aria-current='page' href='/') Inicio
+          a.nav-link(aria-current='page' href='/') Inicio
           //a.nav-link.active(href='/users_add') Añadir Usuarios
           a.nav-link(href='/users_add') Añadir Usuarios
           //a.nav-link.active(href='/users_update') Modificar Usuarios
-          a.nav-link(href='/users_update') Modificar Usuarios
+          a.nav-link.active(aria-current='page' href='/users_update') Modificar Usuarios
 
     main.inner.cover.bg-dark(role='main')
       hr(style='background-color: white;')
-      h1.text-center Creaci&oacute;n de usuarios
+      h1.text-center Actualizacion de usuarios
 
       form.form-inline.mt-2.mt-md-0(action='/users_update', method='post', role='form')
         .row.g-3.align-items-center
@@ -35,25 +35,25 @@ block content
           .card
             // Inicia Formulario
             .card-body.bg-secondary
-              form.row.g-3(action='', method='post', role='form')
+              form.row.g-3(action, method='post', role='form')
                 .col-md-6
                   label.form-label(for='nombre') Nombre
-                  input#nombre.form-control(type='text' name='nombre' placeholder='Ingrese el nombre del usuario')
+                  input#nombre.form-control(type='text' name='nombre' value=nombre placeholder='Ingrese el nombre del usuario')
                 .col-md-6
                   label.form-label(for='apellido') Apellido
-                  input#apellido.form-control(type='text' name='apellido' placeholder='Ingrese el apellido del usuario')
+                  input#apellido.form-control(type='text' name='apellido' value=apellido placeholder='Ingrese el apellido del usuario')
                 .col-12
                   label.form-label(for='direccion') Direcci&oacute;n
-                  input#direccion.form-control(type='text' name='direccion' placeholder='Ingrese la dirección del usuario')
+                  input#direccion.form-control(type='text' name='direccion' value=direccion placeholder='Ingrese la dirección del usuario')
                 .col-md-4
                   label.form-label(for='identificacion') Identificaci&oacute;n
-                  input#identificacion.form-control(type='number' name='identificacion' placeholder='Ingrese la identificación del usuario')
+                  input#identificacion.form-control(type='number' name='identificacion' value=identificacion placeholder='Ingrese la identificación del usuario')
                 .col-md-4
                   label.form-label(for='edad') Edad
-                  input#edad.form-control(type='number' name='edad' placeholder='Ingrese la edad del usuario')
+                  input#edad.form-control(type='number' name='edad' value=edad placeholder='Ingrese la edad del usuario')
                 .col-md-4
                   label.form-label(for='telefono') Tel&eacute;fono
-                  input#telefono.form-control(type='number' name='telefono' placeholder='Ingrese el teléfono del usuario')
+                  input#telefono.form-control(type='number' name='telefono' value=telefono placeholder='Ingrese el teléfono del usuario')
                 .col-md-6
                   .col-md-12.mb-3
                     label.form-label(for='tipo') Tipo de Materia
@@ -63,13 +63,13 @@ block content
                       option(value='Virtual') Virtual
                   .col-md-12.mb-3
                     label.form-label(for='carrera') Carrera
-                    input#carrera.form-control(type='text' name='carrera' placeholder='Ingrese el nombre de la carrera')
+                    input#carrera.form-control(type='text' name='carrera' value=carrera placeholder='Ingrese el nombre de la carrera')
                   .col-md-12.mb-3
                     label.form-label(for='fecha') Fecha de Creación
-                    input#fecha.form-control(type='date' name='creado' placeholder='Fecha Actual')
+                    input#fecha.form-control(type='date' name='creado' value=creado placeholder='Fecha Actual')
                 .col-md-6.d-flex.mb-3
                   label.col-md-3.col-form-label(for='materias') Materias
-                  select#materias.form-select(name='nombres' multiple='' aria-label='multiple select materias')
+                  select#materias.form-select(name='nombres' multiple='' value=nombres aria-label='multiple select materias')
                     option(selected='') Seleccione las materias
                     option(value='Desarrollo web 1') Desarrollo web 1
                     option(value='Desarrollo web 2') Desarrollo web 2
@@ -80,7 +80,11 @@ block content
                     option(value='Periodismo 1') Periodismo 1
                     option(value='Periodismo 2') Periodismo 2
                     option(value='Periodismo 3') Periodismo 3
-                button.btn.btn-dark.btn-outline-secondary(type='submit') Crear Usuario
+                .col-md-12.d-flex.mb-3  
+                  //Añadimos el campo 'documento' para no perder el object Id del documento a actualizar           
+                  label.col-md-4.col-form-label(for='documento') Código del Documento a Actualizar
+                  input#documento.form-control(type='text', name='documento', value=documento, placeholder='Código del Documento', readonly='')
+                button.btn.btn-dark.btn-outline-secondary(type='submit') Actualizar Usuario
           // Fin Formulario
       hr(style='background-color: white;')
     footer.mt-auto.text-white-50

@@ -71,7 +71,7 @@ const doSearchedUpdateUsers = (req, res) => {
         tipo: req.body.tipo,
         nombres: req.body.nombres,
         carrera: req.body.carrera,
-        fecha: req.body.fecha
+        fecha: req.body.creado
     }
     const requestOptions = {
         url: `${apiOptions.server}${path}`,
@@ -85,7 +85,7 @@ const doSearchedUpdateUsers = (req, res) => {
             if (response.statusCode === 200) { // creación exitosa
                 console.log('Body: ', body);
                 // volver a mostrar la vista users_add para el ingreso de más documentos
-                return res.redirect('/');
+                return res.redirect('/users_add');
             } else {
                 console.log('statuscode: ', response.statusCode);
                 console.log('error: ', err);
